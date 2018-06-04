@@ -16,10 +16,10 @@ public class CondominioService {
 	CondominioDAO dao;
 
 	public List<condominio> listarCondominios() {
-		return this.listarCondominios();
+		return this.dao.listarCondominios();
 	}
 
 	public List<bloco> listarBlocos(int condominio) {
-		return this.listarBlocos(condominio);
+		return this.dao.listarBlocos(condominio);
 	}
 }

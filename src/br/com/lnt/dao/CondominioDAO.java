@@ -26,7 +26,7 @@ public class CondominioDAO implements Serializable {
 		List<condominio> listarTabela = new ArrayList<>();
 		List<Object[]> lista = this.manager
 				.createNativeQuery(
-						"select codigo, nome, data_cadastro from sigadm.dbo.cndcondo where data_baixa is null ")
+						"select codigo, nome, dt_cadastro from sigadm.dbo.cndcondo where data_baixa is null ")
 				.getResultList();
 		if (!lista.isEmpty()) {
 			for (Object[] obj : lista) {
@@ -51,7 +51,7 @@ public class CondominioDAO implements Serializable {
 		List<bloco> listarTabela = new ArrayList<>();
 		List<Object[]> lista = this.manager
 				.createNativeQuery("select b.condominio, b.bloco, b.nome from sigadm.dbo.cndbloco b inner join "
-						+ "sigadm.dbo.cndcondo c on c.codigo = b.condominio where c.data_baixa is null ")
+						+ "sigadm.dbo.cndcondo c on c.codigo = b.condominio where c.data_baixa is null and b.condominio = :p1 ")
 				.setParameter("p1", condominio).getResultList();
 		if(!lista.isEmpty()){
 			for(Object[]obj:lista){
